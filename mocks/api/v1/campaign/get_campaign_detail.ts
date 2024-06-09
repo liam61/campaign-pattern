@@ -1,8 +1,8 @@
 module.exports = {
   campaign_info: {
-    main_campaign_id: '2048010316',
-    main_campaign_scene: 'CAMPAIGN_SCENE_FLASH_SALE',
-    main_campaign_name: 'LLLLL new fs test',
+    campaign_id: '2048010316',
+    campaign_scene: 'CAMPAIGN_SCENE_FLASH_SALE',
+    campaign_name: 'LLLLL new fs test',
     description: 'sdfasdfasdfbbb',
     start_time: '1870358400',
     end_time: '1870531199',

@@ -8,8 +8,8 @@ interface PermissionItem {
 type BEPermissionMap = Partial<Record<typeof __LOCALE__, string[]>>
 
 const fakePermissionMap: BEPermissionMap = {
-  sg: ['CreateMainCampaign', 'EditMainCampaign'],
-  cn: ['ViewMainCampaign'],
+  sg: ['CreateCampaign', 'EditCampaign'],
+  cn: ['ViewCampaign'],
 }
 
 export const useDemoPermission = (item: PermissionItem): { loading: boolean; hasPerm: boolean } => {

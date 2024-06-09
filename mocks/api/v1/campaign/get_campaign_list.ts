@@ -1,8 +1,8 @@
 const campaignList = [
   {
-    main_campaign_id: '2048010334',
-    main_campaign_scene: 'CAMPAIGN_SCENE_FLASH_SALE',
-    main_campaign_name: 'bowentest-slot off',
+    campaign_id: '2048010334',
+    campaign_scene: 'CAMPAIGN_SCENE_FLASH_SALE',
+    campaign_name: 'bowentest-slot off',
     description: '111',
     start_time: '1738252800',
     end_time: '1738339199',
@@ -55,9 +55,9 @@ const campaignList = [
     total_slot_cnt: 0,
   },
   {
-    main_campaign_id: '2048010316',
-    main_campaign_scene: 'CAMPAIGN_SCENE_FLASH_SALE',
-    main_campaign_name: 'LLLLL new fs test',
+    campaign_id: '2048010316',
+    campaign_scene: 'CAMPAIGN_SCENE_FLASH_SALE',
+    campaign_name: 'LLLLL new fs test',
     description: 'sdfasdfasdfbbb',
     start_time: '1870358400',
     end_time: '1870531199',
@@ -110,9 +110,9 @@ const campaignList = [
     total_slot_cnt: 111,
   },
   {
-    main_campaign_id: '2048010312',
-    main_campaign_scene: 'CAMPAIGN_SCENE_FLASH_SALE',
-    main_campaign_name: 'test',
+    campaign_id: '2048010312',
+    campaign_scene: 'CAMPAIGN_SCENE_FLASH_SALE',
+    campaign_name: 'test',
     description: '11',
     start_time: '1735574400',
     end_time: '1735660799',

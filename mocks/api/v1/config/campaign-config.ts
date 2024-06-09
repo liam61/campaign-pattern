@@ -1,6 +1,6 @@
 module.exports = [
   {
-    main_campaign_scene: 'CAMPAIGN_SCENE_FLASH_SALE',
+    campaign_scene: 'CAMPAIGN_SCENE_FLASH_SALE',
     function_config_item: {
       budget_control_toggle: '0',
       calendar_sub_campaign: '0',

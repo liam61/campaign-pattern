@@ -23,7 +23,7 @@ describe('useDemoPermission usages', () => {
   })
 
   it('should first loading, then return true', async () => {
-    const { result } = renderHook(() => useDemoPermission({ code: 'CreateMainCampaign' }))
+    const { result } = renderHook(() => useDemoPermission({ code: 'CreateCampaign' }))
 
     expect(result.current.loading).toBe(true)
 
@@ -33,7 +33,7 @@ describe('useDemoPermission usages', () => {
   })
 
   it('should first loading, then return false', async () => {
-    const { result } = renderHook(() => useDemoPermission({ code: 'DeleteMainCampaign' }))
+    const { result } = renderHook(() => useDemoPermission({ code: 'DeleteCampaign' }))
 
     expect(result.current.loading).toBe(true)
 
@@ -66,7 +66,7 @@ describe('PermissionButtonDemo usages', () => {
   })
 
   it('should first loading, then render Button', async () => {
-    render(<PermissionButtonDemo permission="EditMainCampaign" />)
+    render(<PermissionButtonDemo permission="EditCampaign" />)
 
     expect(screen.getByText(/loading/i)).toBeInTheDocument()
 
@@ -77,7 +77,7 @@ describe('PermissionButtonDemo usages', () => {
   })
 
   it('should show modal text after clicking', async () => {
-    render(<PermissionButtonDemo className="btn-flag" permission="EditMainCampaign" />)
+    render(<PermissionButtonDemo className="btn-flag" permission="EditCampaign" />)
 
     const buttonEl = await screen.findByRole('button', { name: 'Button with Permission' })
 

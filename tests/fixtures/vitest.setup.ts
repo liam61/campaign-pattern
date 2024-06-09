@@ -3,13 +3,12 @@ import '@testing-library/jest-dom'
 import { vi } from 'vitest'
 
 import { mswServer } from '../../mocks'
-// import { initGlobalEnvs } from '../initEnvs'
 
 // vitest utils from: https://vitest.dev/api/vi.html
 
 process.env.__UNIT_TEST__ = 'true'
 
-// initGlobalEnvs()
+// initGlobal()
 
 // https://stackoverflow.com/a/54021633/12600517
 window = Object.create(window)

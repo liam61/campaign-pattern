@@ -1,3 +1,4 @@
+/* eslint-disable import/no-default-export */
 import path from 'path'
 
 import type { PlaywrightTestConfig } from '@playwright/test'

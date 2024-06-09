@@ -2,7 +2,7 @@ import { join } from 'path'
 
 import { UserConfig, configDefaults } from 'vitest/config'
 
-const vitestConfig: UserConfig['test'] = {
+export const vitestConfig: UserConfig['test'] = {
   // root: __dirname,
   globals: true,
   environment: 'jsdom',
@@ -10,7 +10,7 @@ const vitestConfig: UserConfig['test'] = {
   reporters: ['default', 'html', ['json', { outputFile: './vitest/test-results.json' }]],
   deps: {
     external: ['@formily'],
-    inline: ['client-zip'],
+    // inline: ['client-zip'],
   },
   coverage: {
     reporter: ['text', 'json', 'html'],
@@ -29,5 +29,3 @@ const vitestConfig: UserConfig['test'] = {
     },
   ],
 }
-
-export default vitestConfig

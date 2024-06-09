@@ -1,13 +1,13 @@
+/* eslint-disable import/no-default-export */
 import { join } from 'path'
 
-import { defineConfig } from 'vite'
-
-import dotenv from 'dotenv'
-import { reactClickToComponent } from 'vite-plugin-react-click-to-component'
-import dynamicImport from 'vite-plugin-dynamic-import'
 import react from '@vitejs/plugin-react-swc'
+import dotenv from 'dotenv'
+import { defineConfig } from 'vite'
+import dynamicImport from 'vite-plugin-dynamic-import'
+import { reactClickToComponent } from 'vite-plugin-react-click-to-component'
 
-import vitestConfig from './tests/fixtures/vitest.config'
+import { vitestConfig } from './tests/fixtures/vitest.config'
 
 const NODE_ENV = process.env.NODE_ENV || 'development'
 const isLocalBuild = process.env.RUNNING_CONTEXT !== 'docker'
