@@ -1,0 +1,12 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`PermissionButtonDemo usages > should first loading, then render Button 1`] = `
+<button
+  class="ant-btn ant-btn-default"
+  type="button"
+>
+  <span>
+    Button with Permission
+  </span>
+</button>
+`;
