@@ -13,7 +13,7 @@ module.exports = {
     'plugin:import/typescript',
     'prettier',
   ],
-  ignorePatterns: ['dist', '.eslintrc.cjs', 'mocks', 'typings'],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'mocks', 'typings', 'fixtures'],
   parser: '@typescript-eslint/parser',
   plugins: ['react-refresh', 'import'],
   settings: {
@@ -22,7 +22,12 @@ module.exports = {
     },
   },
   rules: {
-    'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+    'react-refresh/only-export-components': [
+      'warn',
+      {
+        allowConstantExport: true,
+      },
+    ],
     '@typescript-eslint/explicit-function-return-type': 'error',
     'import/order': [
       'error',
@@ -56,5 +61,14 @@ module.exports = {
     'import/newline-after-import': 'error',
     'import/no-default-export': 'error',
     // 'import/no-unused-modules': 'error',
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      {
+        args: 'all',
+        argsIgnorePattern: '^_',
+        destructuredArrayIgnorePattern: '^_',
+        ignoreRestSiblings: true,
+      },
+    ],
   },
 }

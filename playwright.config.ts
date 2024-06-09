@@ -70,10 +70,9 @@ const config: PlaywrightTestConfig<{ cookies: object[]; authorization: object }>
     ],
     // SOUP authorization
     authorization: {
-      // Using AutoBot account for soup auth
-      soupAuto: true,
-      // Required if using AutoBot account for soup auth
-      soupToken: 'c9adf2a955b147a8b66d1928c2f50330',
+      auto: true,
+      // Required if using bot account for soup auth
+      token: 'change-token-later',
     },
     // Coverage report, default for all page files under src/
     // includeFilePatterns: [/\/src\/.*\.ts(x?)/],
