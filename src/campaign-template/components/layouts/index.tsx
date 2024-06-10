@@ -1,19 +1,16 @@
-import React, { FC } from 'react'
+import { ReactNode } from 'react'
 
-import { Spin } from 'antd'
+import { PageBreadcrumbs, PageSteps, PageTabs } from '@components'
+import { PageHeader, Spin } from 'antd'
 import cn from 'classnames'
 import { omit } from 'lodash'
+import { CampaignLayoutProps } from 'src/campaign-template/types'
 
-import { CampaignLayoutProps } from '../../types'
-
-import { PageBreadcrumbs } from './Breadcrumbs'
 import { PageContent } from './Content'
-import { PageSteps } from './Steps'
-import { PageTabs } from './Tabs'
 
 import styles from './index.scss'
 
-export const CampaignPageLayout: FC<CampaignLayoutProps> = (props) => {
+export function CampaignPageLayout(props: CampaignLayoutProps): ReactNode {
   const { className, loading, children, layoutType, breadCrumbs, headerProps, tabProps, stepProps, footerProps } = props
 
   return (

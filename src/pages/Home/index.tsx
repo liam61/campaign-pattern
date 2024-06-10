@@ -1,6 +1,8 @@
 // import { Page } from 'layout'
 
-export function HomePage(): JSX.Element {
+import { ReactNode } from 'react'
+
+export function HomePage(): ReactNode {
   return (
     <div>
       <h1>Home</h1>

@@ -41,13 +41,42 @@ export interface GetCampaignDetailRes {
   campaign: ICampaign
 }
 
-export interface GetCampaignListReq {
-  page_info: {
-    limit: number
-    offset: number
+export interface PageInfo {
+  limit: number
+  offset: number
+  total: number
+  sort: {
+    name: string
+    order: 'desc' | 'asc'
   }
+}
+
+export interface GetCampaignListReq {
+  page_info: Partial<PageInfo>
+  filters?: Record<string, string | number>
 }
 
 export interface GetCampaignListRes {
   campaign_list: ICampaign[]
+  page_info: PageInfo
+}
+
+export interface CreateCampaignReq {
+  campaign: ICampaign
+}
+
+export interface CreateCampaignRes {
+  campaign: ICampaign
+}
+
+export interface UpdateCampaignReq {
+  campaign: ICampaign
+}
+
+export interface UpdateCampaignRes {
+  campaign: ICampaign
+}
+
+export interface DeleteCampaignReq {
+  campaign_id: string
 }

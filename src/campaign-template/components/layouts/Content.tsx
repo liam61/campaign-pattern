@@ -28,9 +28,5 @@ export function PageContent(props: CampaignLayoutProps): ReactNode {
     )
   }
 
-  if (layoutType === 'noPermission') {
-    return <NoPermission mode="page" />
-  }
-
   return children
 }

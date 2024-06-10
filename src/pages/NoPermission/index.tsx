@@ -1,8 +1,9 @@
+import { ReactNode } from 'react'
 import { redirect } from 'react-router-dom'
 
 import { useMount } from 'ahooks'
 
-export function NoPermissionPage(): JSX.Element {
+export function NoPermissionPage(): ReactNode {
   useMount(() => {
     setTimeout(() => {
       const redirectUrl = window.location.href

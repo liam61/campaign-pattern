@@ -71,8 +71,11 @@ const campaignList = [
 ]
 
 module.exports = {
-  code: 0,
-  msg: '',
-  page_info: { offset: 0, limit: 20, total_count: 3, sort: { field: 'create_time', order: 'desc' } },
   campaign_list: campaignList,
+  page_info: {
+    offset: 0,
+    limit: 20,
+    total: 3,
+    sort: { name: 'create_time', order: 'desc' },
+  },
 }

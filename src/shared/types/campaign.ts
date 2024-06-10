@@ -1,4 +1,5 @@
-import { ICampaign } from './../apis/types'
+import { ICampaign } from '@apis'
+
 import { FECampaignKey } from './biz'
 
 export interface FECampaign extends ICampaign {

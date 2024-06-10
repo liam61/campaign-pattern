@@ -5,7 +5,10 @@ export interface CampaignFunctionConfig {
   // ...
 }
 
-export interface CampaignFunctionConfigRes {
+export interface GetCampaignConfigReq {
   campaign_scene: CampaignScene
+}
+
+export interface GetFunctionConfigRes {
   function_config: CampaignFunctionConfig
 }

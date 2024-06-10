@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import React, { FC } from 'react'
+import { FC } from 'react'
 
 import { CampaignTemplateComponentProps, CampaignTemplateRoutePages } from '../types'
 

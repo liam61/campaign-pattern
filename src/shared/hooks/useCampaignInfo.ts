@@ -1,8 +1,10 @@
+import { useSearchParams } from 'react-router-dom'
+
+import { CampaignFunctionConfig } from '@apis'
 import { useRequest } from 'ahooks'
 import { Options as RequestOptions, Result as RequestResult } from 'ahooks/lib/useRequest/src/types'
 
-import { CampaignFunctionConfig } from '../apis'
-import { pageService } from '../services'
+import { campaignService } from '../services'
 import { FECampaign } from '../types'
 
 interface InitCampaignProps {
@@ -22,18 +24,18 @@ export const useCampaignInfo = (
 ): RequestResult<FECampaign | null, [InitCampaignProps]> => {
   const { campaignId: pCampaignId, ...restProps } = props
 
-  const { routeParams } = useRoute<{ campaign_id: string }>()
+  const [searchParams] = useSearchParams()
 
-  const campaignId = pCampaignId || routeParams?.campaignId
+  const campaignId = pCampaignId || searchParams.get('campaignId') || ''
 
   return useRequest((userProps) => {
     // dynamic params
     const { campaignId: uCampaignId, ...restUserProps } = userProps
 
-    return pageService.getCampaignDetail({
+    return campaignService.getCampaignDetail({
       campaign_id: uCampaignId || campaignId,
       ...restProps,
       ...restUserProps,
-    } as any)
+    })
   }, options)
 }

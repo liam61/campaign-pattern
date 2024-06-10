@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, ReactNode } from 'react'
 
 // to avoid circle dep
 import { CampaignTemplateSDK } from '../core/sdk'
@@ -6,10 +6,10 @@ import { CampaignTemplateSDK } from '../core/sdk'
 import { CampaignDomain, CampaignSubDomain } from './core'
 import { CampaignLayoutProps } from './layout'
 
-export type CampaignTemplateRoutePages = Record<CampaignSubDomain, (() => JSX.Element) | null>
+export type CampaignTemplateRoutePages = Record<CampaignSubDomain, (() => ReactNode) | null>
 
 export interface CampaignTemplateComponentProps {
-  children?: JSX.Element
+  children?: ReactNode
   sdk: CampaignTemplateSDK
   /**
    * the subdomain page to render
@@ -19,7 +19,6 @@ export interface CampaignTemplateComponentProps {
 
 export type CampaignTemplateAsComponent = FC<CampaignTemplateComponentProps> & {
   Campaign: FC<CampaignDomainPageProps>
-  // SubCampaign: FC<CampaignDomainPageProps>
   Session: FC<CampaignDomainPageProps>
 }
 

@@ -1,18 +1,19 @@
-import React, { FC, useEffect } from 'react'
+import { FC, ReactNode, useEffect } from 'react'
 
-import { CampaignPageLayout, PageLoading } from '../components'
-import { CampaignInfoProvider } from '../context'
+import { CampaignPageProvider } from '@shared/context'
+
+import { CampaignPageLayout } from '../components'
 import { useCampaignTemplate } from '../hooks'
-import { CampaignSubDomainPageProps, CheckAndInitPagePayload } from '../types'
+import { CampaignSubDomainPageProps, InitPagePayload } from '../types'
 
-const CampaignTemplatePage: FC<CampaignSubDomainPageProps> = (props) => {
+function CampaignTemplatePage(props: CampaignSubDomainPageProps): ReactNode {
   const { campaignDomain, layoutType, disabled, renderLoading = PageLoading } = props
 
   const { loading, pageProps, sdk, initiatePage } = useCampaignTemplate()
 
   useEffect(() => {
     // here pass all props to sdk
-    initiatePage(props as unknown as CheckAndInitPagePayload)
+    initiatePage(props as unknown as InitPagePayload)
   }, [])
 
   if (loading) return renderLoading()
@@ -25,9 +26,9 @@ const CampaignTemplatePage: FC<CampaignSubDomainPageProps> = (props) => {
   }
 
   return (
-    <CampaignInfoProvider renderLoading={renderLoading}>
+    <CampaignPageProvider renderLoading={renderLoading}>
       <CampaignPageLayout {...mergedPageProps} />
-    </CampaignInfoProvider>
+    </CampaignPageProvider>
   )
 }
 

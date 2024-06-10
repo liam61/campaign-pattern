@@ -1,6 +1,7 @@
+import { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 
-export function NoMatchPage(): JSX.Element {
+export function NoMatchPage(): ReactNode {
   return (
     <div>
       <h2>Nothing to see here!</h2>

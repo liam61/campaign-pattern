@@ -1,29 +1,29 @@
 // import loadable from '@loadable/component';
-import { transform } from 'lodash';
+import { transform } from 'lodash'
 
 import {
   CampaignSceneExtensionsLoader,
   CampaignSubDomain,
-  CheckAndInitPagePayload,
+  InitPagePayload,
   ExtensionContext,
   IExtension,
   IExtensionCore,
-} from '../types';
+} from '../types'
 
-export const checkRenderPage = (payload: CheckAndInitPagePayload, currentPage: CampaignSubDomain): boolean => {
-  const { campaignDomain, layoutType, disabled } = payload;
+export const checkRenderPage = (payload: InitPagePayload, currentPage: CampaignSubDomain): boolean => {
+  const { campaignDomain, layoutType, disabled } = payload
 
   const suffixMap = {
     table: 'list',
     form: 'setting',
-  };
+  }
 
-  if (disabled || !campaignDomain || !layoutType) return false;
+  if (disabled || !campaignDomain || !layoutType) return false
 
-  const checkingPage = `${campaignDomain}${suffixMap[layoutType]}`.toLowerCase();
+  const checkingPage = `${campaignDomain}${suffixMap[layoutType]}`.toLowerCase()
 
-  return checkingPage === currentPage;
-};
+  return checkingPage === currentPage
+}
 
 /**
  * patch page context for extensions
@@ -38,25 +38,25 @@ export const performExtensions = (
     const loaderPatcher = async (): Promise<IExtension[]> => {
       // if (page !== renderPage) return [];
       try {
-        const extensions = (await loader()) || [];
+        const extensions = (await loader()) || []
 
         return extensions.map((ex) => {
           return {
             ...ex,
             setup() {
               // inject current page context
-              return ex?.setup(getExtensionCore(), getExtensionContext());
+              return ex?.setup(getExtensionCore(), getExtensionContext())
             },
             dispose() {
-              return ex?.dispose?.(getExtensionCore(), getExtensionContext());
+              return ex?.dispose?.(getExtensionCore(), getExtensionContext())
             },
-          } as IExtension;
-        });
+          } as IExtension
+        })
       } catch (err) {
-        return [];
+        return []
       }
-    };
+    }
 
-    obj[page] = loaderPatcher;
-  });
-};
+    obj[page] = loaderPatcher
+  })
+}

@@ -14,7 +14,7 @@ import {
 } from 'common-pattern'
 
 import { PageStepProps, PageTabsProps } from './layout'
-import { CheckAndInitPagePayload } from './template'
+import { InitPagePayload } from './template'
 
 export type CampaignDomain = 'campaign' | 'subCampaign' | 'session'
 
@@ -35,7 +35,7 @@ export interface IExtension {
 
 export type ExtensionProvider<T> = (config: { name?: string; content: T }) => void
 
-export type ExtensionContext = CheckAndInitPagePayload & {
+export type ExtensionContext = InitPagePayload & {
   campaignSubDomain: CampaignSubDomain
 }
 

@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { ReactNode, useState } from 'react'
 
 import { Button, ButtonProps } from 'antd'
 
@@ -10,7 +10,7 @@ type ButtonDemoProps = ButtonProps & {
   permission?: string | boolean
 }
 
-export const PermissionButtonDemo: FC<ButtonDemoProps> = (props) => {
+export function PermissionButtonDemo(props: ButtonDemoProps): ReactNode {
   const { permission, ...restProps } = props
 
   const { loading, hasPerm } = useDemoPermission({ code: permission })

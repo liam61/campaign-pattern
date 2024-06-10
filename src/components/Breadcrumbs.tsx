@@ -1,4 +1,5 @@
 import { ReactNode } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { Breadcrumb, BreadcrumbItemProps, Button } from 'antd'
 import { isFunction, isString } from 'lodash'
@@ -12,6 +13,8 @@ export type BreadCrumbItem = Pick<BreadcrumbItemProps, 'href' | 'onClick'> & { t
 export function PageBreadcrumbs(props: PageBreadCrumbProps): ReactNode {
   const { items } = props
 
+  const navigate = useNavigate()
+
   if (!items?.length) return null
 
   return (
@@ -23,7 +26,7 @@ export function PageBreadcrumbs(props: PageBreadCrumbProps): ReactNode {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const handleClick = (ev: any): void => {
           if (isString(href)) {
-            navTo(href)
+            navigate(href, {})
             return
           }
 

@@ -1,8 +1,10 @@
+import { ReactNode } from 'react'
+
 import { BreadcrumbItemProps, StepProps } from 'antd'
 
 export interface CampaignLayoutProps {
-  children?: JSX.Element
-  layoutType?: 'table' | 'form' | 'noPermission'
+  children?: ReactNode
+  layoutType?: 'table' | 'form'
   permCode?: string
 
   // common antd UI part
@@ -16,7 +18,7 @@ export interface CampaignLayoutProps {
   formProps?: FormSettingProps | null
   footerProps?: PageFooterProps | null
 
-  renderLoading?: () => JSX.Element | null
+  renderLoading?: () => ReactNode | null
 }
 
 export type BreadCrumbItem = Pick<BreadcrumbItemProps, 'href' | 'onClick' | 'className'> & { title: string }

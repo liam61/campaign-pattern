@@ -1,16 +1,17 @@
 /* eslint-disable import/no-default-export */
-import { Suspense } from 'react'
+import { ReactNode, Suspense } from 'react'
 import { Routes, Route, Outlet } from 'react-router-dom'
 
-import { HomePage } from './pages/Home'
-import { LoginPage } from './pages/Login'
-import { NoMatchPage } from './pages/NoMatch'
-import { NoPermissionPage } from './pages/NoPermission'
+import { HomePage } from '@pages/Home'
+import { LoginPage } from '@pages/Login'
+import { NoMatchPage } from '@pages/NoMatch'
+import { NoPermissionPage } from '@pages/NoPermission'
+
 import { Loading, ProductCampaignDetailPage, ProductCampaignListPage } from './routes.config'
 
 import './App.css'
 
-function Layout(): JSX.Element {
+function Layout(): ReactNode {
   return (
     <div className="App">
       <header>Campaign Template</header>
@@ -27,7 +28,7 @@ function Layout(): JSX.Element {
   )
 }
 
-function App(): JSX.Element {
+function App(): ReactNode {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>

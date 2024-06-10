@@ -2,12 +2,8 @@ import { useMemo } from 'react'
 
 import { useRequest } from 'ahooks'
 
-import {
-  CampaignTemplateContextValue,
-  CampaignLayoutProps,
-  CheckAndInitPagePayload,
-  InitCampaignTemplateProps,
-} from '../types'
+import { CampaignTemplateContextValue } from '../context'
+import { CampaignLayoutProps, InitPagePayload, InitCampaignTemplateProps } from '../types'
 
 export const useInitiateCampaignTemplate = (props: InitCampaignTemplateProps): CampaignTemplateContextValue => {
   const { sdk, renderPage } = props
@@ -21,7 +17,7 @@ export const useInitiateCampaignTemplate = (props: InitCampaignTemplateProps): C
     loading,
     data: pageProps,
     runAsync: initiatePage,
-  } = useRequest<CampaignLayoutProps | null, [CheckAndInitPagePayload]>(
+  } = useRequest<CampaignLayoutProps | null, [InitPagePayload]>(
     (userProps) => {
       return sdk.checkAndInitPage(userProps)
     },

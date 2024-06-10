@@ -1,6 +1,8 @@
 /* eslint-disable import/no-default-export */
 // import { Page } from 'layout'
 
-export default function ProductCampaignListPage(): JSX.Element {
+import { ReactNode } from 'react'
+
+export default function ProductCampaignListPage(): ReactNode {
   return <div>ProductCampaignListPage</div>
 }

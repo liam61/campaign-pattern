@@ -3,7 +3,7 @@ import {
   CampaignSceneConfigs,
   CampaignSceneExtensionsLoader,
   CampaignSubDomain,
-  CheckAndInitPagePayload,
+  InitPagePayload,
   ExtensionContext,
   IExtension,
 } from '../types'
@@ -68,7 +68,7 @@ export class CampaignTemplateSDK extends CampaignTemplateRenderer {
    * 2. initiate page extensions
    * 3. return parsed layout props
    */
-  async checkAndInitPage(payload: CheckAndInitPagePayload): Promise<CampaignLayoutProps | null> {
+  async checkAndInitPage(payload: InitPagePayload): Promise<CampaignLayoutProps | null> {
     if (!checkRenderPage(payload, this.getExtensionContext().campaignSubDomain)) return null
 
     this.extensionCore.setContext(payload)

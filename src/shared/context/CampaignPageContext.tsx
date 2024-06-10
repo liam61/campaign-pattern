@@ -1,9 +1,10 @@
-import { createContext, FC, useMemo } from 'react'
+import { ReactNode, createContext, useMemo } from 'react'
 
+import { CampaignFunctionConfig } from '@apis'
 import { useRequest } from 'ahooks'
 import { Spin } from 'antd'
 
-import { CampaignFunctionConfig } from '../apis'
+import { pageService } from '../services'
 
 export interface CampaignPageContextValue {
   loading: boolean
@@ -20,7 +21,7 @@ const CampaignPageInitialValues = {
 export const CampaignPageContext = createContext<CampaignPageContextValue>(CampaignPageInitialValues)
 
 export interface CampaignPageProviderProps {
-  children?: JSX.Element
+  children?: ReactNode
   /**
    * force render children even page apis not ready
    */
@@ -28,14 +29,14 @@ export interface CampaignPageProviderProps {
   permission?: string
 }
 
-export const CampaignPageProvider: FC<CampaignPageProviderProps> = (props) => {
+export function CampaignPageProvider(props: CampaignPageProviderProps): ReactNode {
   const { children, forceRender = false, permission } = props
 
   const { loading: permLoading, data: permissionConfig } = useRequest(pageService.getPermissionConfig)
   const { loading: configLoading, data: functionConfig } = useRequest(pageService.getFunctionConfig)
 
   // TODO: solve auth in auth provider
-  const hasPermission = useMemo(() => {
+  const _hasPermission = useMemo(() => {
     return !permission || permissionConfig?.[permission]
   }, [permission, permissionConfig])
 
