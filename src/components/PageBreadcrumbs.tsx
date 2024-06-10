@@ -5,10 +5,10 @@ import { Breadcrumb, BreadcrumbItemProps, Button } from 'antd'
 import { isFunction, isString } from 'lodash'
 
 export interface PageBreadCrumbProps {
-  items: BreadCrumbItem[]
+  items: PageBreadCrumbItem[]
 }
 
-export type BreadCrumbItem = Pick<BreadcrumbItemProps, 'href' | 'onClick'> & { title: string }
+export type PageBreadCrumbItem = Pick<BreadcrumbItemProps, 'href' | 'onClick'> & { title: string }
 
 export function PageBreadcrumbs(props: PageBreadCrumbProps): ReactNode {
   const { items } = props
@@ -18,7 +18,7 @@ export function PageBreadcrumbs(props: PageBreadCrumbProps): ReactNode {
   if (!items?.length) return null
 
   return (
-    <Breadcrumb>
+    <Breadcrumb className="ct-page-breadcrumb">
       {items.map((itemProps, index) => {
         const { title, onClick, href } = itemProps
         const itemClickable = isString(href) || isFunction(onClick)

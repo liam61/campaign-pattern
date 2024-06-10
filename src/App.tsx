@@ -6,34 +6,36 @@ import { HomePage } from '@pages/Home'
 import { LoginPage } from '@pages/Login'
 import { NoMatchPage } from '@pages/NoMatch'
 import { NoPermissionPage } from '@pages/NoPermission'
+import { Layout } from 'antd'
 
 import { Loading, ProductCampaignDetailPage, ProductCampaignListPage } from './routes.config'
 
+const { Header, Sider, Content } = Layout
+
 import './App.css'
 
-function Layout(): ReactNode {
+function AppLayout(): ReactNode {
   return (
-    <div className="App">
-      <header>Campaign Template</header>
-
-      <main>
-        <aside>Menus</aside>
-
-        <section className="ct-section">
+    <Layout className="App">
+      <Header>Campaign Template</Header>
+      <Layout>
+        <Sider width="25%">Menus</Sider>
+        <Content>
           <Outlet />
-        </section>
-      </main>
-      {/* <footer></footer> */}
-    </div>
+        </Content>
+      </Layout>
+      {/* <Footer>Footer</Footer> */}
+    </Layout>
   )
 }
 
 function App(): ReactNode {
   return (
     <Routes>
-      <Route path="/" element={<Layout />}>
+      <Route path="/" element={<AppLayout />}>
         <Route path="login" element={<LoginPage />} />
         <Route index element={<HomePage />} />
+
         <Route
           path="campaign/product/list"
           element={
@@ -51,7 +53,7 @@ function App(): ReactNode {
           }
         />
 
-        <Route path="noPermission" element={<NoPermissionPage />} />
+        <Route path="401" element={<NoPermissionPage />} />
         <Route path="*" element={<NoMatchPage />} />
       </Route>
     </Routes>

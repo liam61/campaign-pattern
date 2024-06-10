@@ -1,46 +1,31 @@
 import { ReactNode } from 'react'
 
-import { BreadcrumbItemProps, StepProps } from 'antd'
+import { PageTabsProps, PageStepProps, PageFooterProps, PageBreadCrumbProps } from '@components'
+import { FormProps } from '@formily/antd'
+import { PageHeaderProps, TableProps } from 'antd'
 
 export interface CampaignLayoutProps {
   children?: ReactNode
   layoutType?: 'table' | 'form'
-  permCode?: string
+  permission?: string
 
-  // common antd UI part
+  // common
   loading?: boolean
   className?: string
-  breadCrumbs?: BreadCrumbItem[] | null
+
+  // antd
+  breadCrumbProps?: PageBreadCrumbProps | null
   headerProps?: PageHeaderProps | null
   tabProps?: PageTabsProps | null
   stepProps?: PageStepProps | null
-  tableProps?: TableSettingProps | null
-  formProps?: FormSettingProps | null
+  tableProps?: PageTableProps | null
+  formProps?: PageFormProps | null
   footerProps?: PageFooterProps | null
 
   renderLoading?: () => ReactNode | null
 }
 
-export type BreadCrumbItem = Pick<BreadcrumbItemProps, 'href' | 'onClick' | 'className'> & { title: string }
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type PageTableProps = TableProps<Record<string, any>>
 
-export interface BreadCrumbProps {
-  items: BreadCrumbItem[]
-}
-
-export type TabItemProps = TabPaneProps & {
-  items?: TabItemProps[]
-}
-
-export type PageTabsProps = Omit<TabsProps, 'items'> & {
-  items?: TabItemProps[]
-}
-
-export type PageStepProps = StepProps & {
-  items?: StepProps[]
-}
-
-export type TableSettingProps = TableProps & {
-  tableRef?: TableInstanceRef
-}
-
-export type FormSettingProps = FormProps<Record<string, any>>
+export type PageFormProps = FormProps

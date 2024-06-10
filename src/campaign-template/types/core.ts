@@ -1,19 +1,10 @@
 import { ComponentProps } from 'react'
 
+import { PageTabsProps, PageStepProps, PageFooterProps } from '@components'
 import { JSXComponent } from '@formily/react'
-import {
-  BaseFieldProps,
-  ColumnProps,
-  FormLayoutProps,
-  FormProps,
-  PageFooterProps,
-  PageHeaderProps,
-  TableActionProps,
-  TableProps,
-  VoidFieldProps,
-} from 'common-pattern'
+import { PageHeaderProps, TableProps } from 'antd'
+import { ColumnProps } from 'antd/lib/table'
 
-import { PageStepProps, PageTabsProps } from './layout'
 import { InitPagePayload } from './template'
 
 export type CampaignDomain = 'campaign' | 'subCampaign' | 'session'
