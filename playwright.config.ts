@@ -68,10 +68,9 @@ const config: PlaywrightTestConfig<{ cookies: object[]; authorization: object }>
         path: '/',
       },
     ],
-    // SOUP authorization
     authorization: {
       auto: true,
-      // Required if using bot account for soup auth
+      // Required if using bot account for auth
       token: 'change-token-later',
     },
     // Coverage report, default for all page files under src/

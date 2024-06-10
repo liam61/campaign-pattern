@@ -6,7 +6,7 @@ async function globalSetup(config: FullConfig<{}>): Promise<void> {
   const browser = await chromium.launch()
   const browserCtx = await browser.newContext()
 
-  // calling dev-lib setup for SOUP authorization
+  // calling dev-lib setup for authorization
   // await globalSetup(browserCtx, config)
 
   await browserCtx.storageState({ path: storageState as string })

@@ -33,4 +33,4 @@ const getCampaignListService = (): RequestHandler => {
   return createEndPoint(GetCampaignListPath, loadContentByFolderPath(GetCampaignListPath))
 }
 
-export const services = [getCampaignListService()]
+export const services: RequestHandler[] = [getCampaignListService()]

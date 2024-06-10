@@ -1,8 +1,8 @@
 module.exports = [
   {
-    campaign_scene: 'FLASH_SALE',
+    campaign_scene: 'PRODUCT',
     function_config: {
-      support_member_label: '0',
+      support_mechanic_label: '1',
     },
   },
 ]

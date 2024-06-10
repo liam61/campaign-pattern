@@ -4,7 +4,7 @@ export function HomePage(): JSX.Element {
   return (
     <div>
       <h1>Home</h1>
-      <p>Welcome to Campaign Template!</p>
+      <p>Welcome to Campaign Template Demo!</p>
     </div>
   )
 }

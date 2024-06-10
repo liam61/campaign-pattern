@@ -43,9 +43,12 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@': join(__dirname, 'src'),
+      src: join(__dirname, 'src'),
       '~antd': join(__dirname, 'node_modules/antd'),
-      '@shared': join(__dirname, 'src/_shared'),
+      '@components': join(__dirname, 'src/components'),
+      '@shared': join(__dirname, 'src/shared'),
+      '@pages': join(__dirname, 'src/pages'),
+      '@ct': join(__dirname, 'src/campaign-template'),
     },
     // alias: [
     //   { find: '@', replacement: fileURLToPath(new URL('./src', import.meta.url)) },

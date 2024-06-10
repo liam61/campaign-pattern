@@ -2,9 +2,11 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@shared/*": ["./src/_shared/*"],
       "src/*": ["./src/*"],
-      "@/*": ["./src/*"]
+      "@components/*": ["./src/components/*"],
+      "@shared/*": ["./src/shared/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@ct/*": ["./src/campaign-template/*"]
     },
     "target": "ES2020",
     "useDefineForClassFields": true,
@@ -14,7 +16,7 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "types": ["jest", "node"],
-    "typeRoots": ["node_modules/@types", "./typings"],
+    "typeRoots": ["node_modules/@types", "./src/vite-env.d.ts", "./typings"],
 
     /* Bundler mode */
     "moduleResolution": "bundler",
