@@ -1,19 +1,21 @@
-import { ComponentProps } from 'react'
-
-import { PageTabsProps, PageStepProps, PageFooterProps } from '@components'
-import { JSXComponent } from '@formily/react'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { PageFooterProps, TabItemProps, PageStepItemProps } from '@components'
+import { Field, VoidField } from '@formily/core'
+import { CTButtonProps } from '@shared/types'
 import { PageHeaderProps, TableProps } from 'antd'
-import { ColumnProps } from 'antd/lib/table'
 
-import { InitPagePayload } from './template'
+import { CTColumnProps } from './layout'
+import { InitCampaignPagePayload } from './template'
 
-export type CampaignDomain = 'campaign' | 'subCampaign' | 'session'
+export type CampaignDomain = 'campaign' | 'session'
 
 export type CampaignSubDomain = 'campaignList' | 'campaignDetail' | 'sessionList' | 'sessionDetail'
 
-export type CampaignSceneExtensionsLoader = Record<CampaignSubDomain, () => Promise<IExtension[]>>
+export type ExtensionLoader = () => Promise<IExtension[]>
 
-export type CampaignSceneConfigs = Record<CampaignSubDomain, {}>
+export interface CampaignPageConfigs {
+  //
+}
 
 /**
  * the extension to implement
@@ -26,28 +28,28 @@ export interface IExtension {
 
 export type ExtensionProvider<T> = (config: { name?: string; content: T }) => void
 
-export type ExtensionContext = InitPagePayload & {
-  campaignSubDomain: CampaignSubDomain
+export type ExtensionContext = InitCampaignPagePayload & {
+  // campaignPage: CampaignSubDomain
 }
 
-type FormItemProps = BaseFieldProps<ComponentProps<JSXComponent>>
+// type FormItemProps = BaseFieldProps<ComponentProps<JSXComponent>>
 
 export interface IExtensionCore {
   getContext: () => ExtensionContext
 
   // common
   provideHeader: ExtensionProvider<PageHeaderProps>
-  provideTabs: ExtensionProvider<PageTabsProps>
-  provideSteps: ExtensionProvider<PageStepProps>
+  provideTab: ExtensionProvider<TabItemProps>
+  provideStep: ExtensionProvider<PageStepItemProps>
   provideFooter: ExtensionProvider<PageFooterProps>
 
-  // table
-  provideTable: ExtensionProvider<Omit<TableProps, 'columns' | 'actions'>>
-  provideTableColumns: ExtensionProvider<ColumnProps[]>
-  provideTableActions: ExtensionProvider<TableActionProps[]>
+  // table  TODO: table and form type props
+  provideTable: ExtensionProvider<Omit<TableProps<Record<string, any>>, 'columns'>>
+  provideColumn: ExtensionProvider<CTColumnProps>
+  provideAction: ExtensionProvider<CTButtonProps>
 
   // form
   provideForm: ExtensionProvider<FormProps<Record<string, any>>>
-  provideFormFields: ExtensionProvider<FormItemProps>
-  provideFormSection: ExtensionProvider<VoidFieldProps<FormLayoutProps>>
+  provideField: ExtensionProvider<Field>
+  provideFormSection: ExtensionProvider<VoidField>
 }

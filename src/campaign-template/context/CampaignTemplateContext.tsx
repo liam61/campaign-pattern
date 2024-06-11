@@ -2,7 +2,7 @@ import { ReactNode, createContext } from 'react'
 
 import { CampaignTemplateSDK } from '../core'
 import { useInitiateCampaignTemplate } from '../hooks'
-import { CampaignLayoutProps, InitPagePayload, InitCampaignTemplateProps } from '../types'
+import { CampaignLayoutProps, InitCampaignPagePayload, InitCampaignTemplateProps } from '../types'
 
 export interface CampaignTemplateContextValue {
   sdk: CampaignTemplateSDK
@@ -10,14 +10,14 @@ export interface CampaignTemplateContextValue {
   /**
    * parsed page props
    */
-  pageProps?: CampaignLayoutProps | null
-  initiatePage: (payload: InitPagePayload) => Promise<CampaignLayoutProps | null>
+  data?: CampaignLayoutProps | null
+  initiatePage: (payload: InitCampaignPagePayload) => Promise<CampaignLayoutProps | null>
 }
 
 const CampaignTemplateInitialValues = {
   sdk: null,
   loading: false,
-  pageProps: null,
+  data: null,
   initiatePage: async (): Promise<null> => null,
 } as unknown as CampaignTemplateContextValue
 
@@ -28,10 +28,14 @@ export function CampaignTemplateProvider(props: InitCampaignTemplateProps): Reac
 
   const { loading, ...restValue } = useInitiateCampaignTemplate(props)
 
-  const contextValue: CampaignTemplateContextValue = {
-    loading,
-    ...restValue,
-  }
-
-  return <CampaignTemplateContext.Provider value={contextValue}>{children}</CampaignTemplateContext.Provider>
+  return (
+    <CampaignTemplateContext.Provider
+      value={{
+        loading,
+        ...restValue,
+      }}
+    >
+      {children}
+    </CampaignTemplateContext.Provider>
+  )
 }

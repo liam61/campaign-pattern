@@ -1,4 +1,4 @@
-## Campaign Design
+## Campaign Template
 
 ### Change Milestones
 

@@ -1,5 +1,5 @@
 export * from './types'
-export * from './pages'
+export * from './TemplateComponent'
 export * from './context'
 export * from './hooks'
 export * from './core'

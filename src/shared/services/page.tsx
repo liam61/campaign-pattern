@@ -7,7 +7,9 @@ class PageService {
     return configs
   }
 
-  async getPermissionConfig() {}
+  async getPermissionConfig(): object {
+    //
+  }
 }
 
 export const pageService = new PageService()

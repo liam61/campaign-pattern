@@ -5,7 +5,7 @@ import { Breadcrumb, BreadcrumbItemProps, Button } from 'antd'
 import { isFunction, isString } from 'lodash'
 
 export interface PageBreadCrumbProps {
-  items: PageBreadCrumbItem[]
+  items?: PageBreadCrumbItem[]
 }
 
 export type PageBreadCrumbItem = Pick<BreadcrumbItemProps, 'href' | 'onClick'> & { title: string }

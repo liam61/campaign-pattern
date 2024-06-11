@@ -1,6 +1,6 @@
 import { assign } from 'lodash'
 
-import { CampaignSceneConfigs, ExtensionContext, IExtensionCore } from '../types'
+import { CampaignPageConfigs, ExtensionContext, IExtensionCore } from '../types'
 
 export class ExtensionCore implements IExtensionCore {
   /**
@@ -8,7 +8,7 @@ export class ExtensionCore implements IExtensionCore {
    */
   private extensionContext = {} as ExtensionContext
 
-  constructor(_configs?: CampaignSceneConfigs) {
+  constructor(_configs?: CampaignPageConfigs) {
     //
   }
 

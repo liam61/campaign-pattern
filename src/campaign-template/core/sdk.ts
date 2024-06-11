@@ -1,42 +1,44 @@
 import {
   CampaignLayoutProps,
-  CampaignSceneConfigs,
-  CampaignSceneExtensionsLoader,
+  CampaignPageConfigs,
+  ExtensionLoader,
   CampaignSubDomain,
-  InitPagePayload,
+  InitCampaignPagePayload,
   ExtensionContext,
   IExtension,
 } from '../types'
-import { checkRenderPage, performExtensions } from '../utils'
+import { performExtensions } from '../utils'
 
 import { ExtensionCore } from './extension'
 import { CampaignTemplateRenderer } from './renderer'
 
 export class CampaignTemplateSDK extends CampaignTemplateRenderer {
-  private configs = {} as CampaignSceneConfigs
-  private extensionsLoader = {} as CampaignSceneExtensionsLoader
+  private configs = {} as CampaignPageConfigs
   private extensionCore = {} as ExtensionCore
 
-  constructor(loader: CampaignSceneExtensionsLoader, configs?: CampaignSceneConfigs) {
+  private loader = (async () => []) as ExtensionLoader
+
+  constructor(loader: ExtensionLoader, configs?: CampaignPageConfigs) {
     super()
 
     this.extensionCore = new ExtensionCore(configs)
 
     this.registerExtensions(loader)
-    this.setConfigs(configs || ({} as CampaignSceneConfigs))
+    this.setConfigs(configs || ({} as CampaignPageConfigs))
   }
 
+  // TODO: remove current render page
   async setRenderPage(page: CampaignSubDomain): Promise<void> {
     await this.reset()
-    this.extensionCore.setContext({ campaignSubDomain: page })
+    this.extensionCore.setContext({ campaignPage: page })
   }
 
   getExtensionContext(): ExtensionContext {
     return this.extensionCore.getContext()
   }
 
-  registerExtensions(loader: CampaignSceneExtensionsLoader): void {
-    this.extensionsLoader = performExtensions(
+  registerExtensions(loader: ExtensionLoader): void {
+    this.loader = performExtensions(
       loader,
       () => this.extensionCore,
       () => this.getExtensionContext()
@@ -44,14 +46,14 @@ export class CampaignTemplateSDK extends CampaignTemplateRenderer {
   }
 
   async getExtensions(): Promise<IExtension[]> {
-    return this.extensionsLoader[this.getExtensionContext().campaignSubDomain]?.() || []
+    return this.loader?.() || []
   }
 
-  setConfigs(configs: CampaignSceneConfigs): void {
+  setConfigs(configs: CampaignPageConfigs): void {
     this.configs = configs
   }
 
-  getConfigs(): CampaignSceneConfigs {
+  getConfigs(): CampaignPageConfigs {
     return this.configs
   }
 
@@ -59,7 +61,7 @@ export class CampaignTemplateSDK extends CampaignTemplateRenderer {
     const extensions = await this.getExtensions()
 
     extensions.forEach((ex) => ex.dispose)
-    this.configs = {} as CampaignSceneConfigs
+    this.configs = {} as CampaignPageConfigs
     this.extensionCore.reset()
   }
 
@@ -68,9 +70,8 @@ export class CampaignTemplateSDK extends CampaignTemplateRenderer {
    * 2. initiate page extensions
    * 3. return parsed layout props
    */
-  async checkAndInitPage(payload: InitPagePayload): Promise<CampaignLayoutProps | null> {
-    if (!checkRenderPage(payload, this.getExtensionContext().campaignSubDomain)) return null
-
+  async initTemplate(payload: InitCampaignPagePayload): Promise<CampaignLayoutProps | null> {
+    // if (!checkRenderPage(payload, this.getExtensionContext().campaignPage)) return null
     this.extensionCore.setContext(payload)
 
     return this.parse()

@@ -1,21 +1,9 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { FC } from 'react'
 
-import { CampaignTemplateComponentProps, CampaignTemplateRoutePages } from '../types'
+// import { CampaignTemplateProps } from '../types'
 
 export class CampaignTemplateRenderer {
-  renderToRoutePages(
-    CampaignTemplateComponent: FC<Omit<CampaignTemplateComponentProps, 'sdk'>>
-  ): CampaignTemplateRoutePages {
-    const campaignList = () => <CampaignTemplateComponent renderPage="campaignList" />
-    const campaignDetail = () => <CampaignTemplateComponent renderPage="campaignDetail" />
-    // const sessionList = () => <CampaignSceneComponent renderSubDomain="sessionList" />;
-
-    return {
-      campaignList,
-      campaignDetail,
-      sessionList: null,
-      sessionDetail: null,
-    }
+  renderToPage(Component: FC): FC {
+    return () => <Component />
   }
 }
