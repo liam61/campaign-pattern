@@ -6,7 +6,7 @@ import { CompoundedTemplateComponent, TemplateComponentProps } from '../types'
 import { CampaignListPage, CampaignDetailPage } from './Page'
 
 // template pages
-function _CampaignList(props: TemplateComponentProps): ReactNode {
+function _ListPageTemplate(props: TemplateComponentProps): ReactNode {
   const { sdk, ...restProps } = props
 
   return (
@@ -16,7 +16,7 @@ function _CampaignList(props: TemplateComponentProps): ReactNode {
   )
 }
 
-function _CampaignDetail(props: TemplateComponentProps): ReactNode {
+function _DetailPageTemplate(props: TemplateComponentProps): ReactNode {
   const { sdk, ...restProps } = props
 
   return (
@@ -26,7 +26,7 @@ function _CampaignDetail(props: TemplateComponentProps): ReactNode {
   )
 }
 
-function _SessionList(props: TemplateComponentProps): ReactNode {
+function _SessionListTemplate(props: TemplateComponentProps): ReactNode {
   const { sdk, ...restProps } = props
 
   return (
@@ -47,6 +47,6 @@ function _SessionList(props: TemplateComponentProps): ReactNode {
 //   )
 // }
 
-export const ListPageTemplate = _CampaignList as CompoundedTemplateComponent<'table'>
+export const ListPageTemplate = _ListPageTemplate as CompoundedTemplateComponent<'table'>
 
-export const DetailPageTemplate = _CampaignDetail as CompoundedTemplateComponent<'form'>
+export const DetailPageTemplate = _DetailPageTemplate as CompoundedTemplateComponent<'form'>

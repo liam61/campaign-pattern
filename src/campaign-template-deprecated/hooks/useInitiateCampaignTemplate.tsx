@@ -1,4 +1,4 @@
-import { useRequest } from 'ahooks'
+import { useRequest, useUnmount } from 'ahooks'
 
 import { CampaignTemplateContextValue } from '../context'
 import { CampaignLayoutProps, InitCampaignPagePayload, InitCampaignTemplateProps } from '../types'
@@ -6,10 +6,14 @@ import { CampaignLayoutProps, InitCampaignPagePayload, InitCampaignTemplateProps
 export const useInitiateCampaignTemplate = (props: InitCampaignTemplateProps): CampaignTemplateContextValue => {
   const { sdk } = props
 
+  useUnmount(() => {
+    sdk.reset()
+  })
+
   const {
     loading,
     data,
-    runAsync: initiatePage,
+    runAsync: init,
   } = useRequest<CampaignLayoutProps | null, [InitCampaignPagePayload]>(
     (userProps) => {
       return sdk.initTemplate(userProps)
@@ -21,6 +25,6 @@ export const useInitiateCampaignTemplate = (props: InitCampaignTemplateProps): C
     ...props,
     loading,
     data,
-    initiatePage,
+    init,
   }
 }

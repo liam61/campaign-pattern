@@ -1,16 +1,27 @@
 import { FC, ReactNode } from 'react'
 
+import { Form as BaseForm } from '@formily/antd'
+import { Field as BaseField } from '@formily/react'
+import { Table } from 'antd'
+
 // to avoid circle dep
 import { CampaignTemplateSDK } from '../core/sdk'
 
 import { CampaignDomain } from './core'
 import { CampaignLayoutProps, LayoutType } from './layout'
 
+const { Column: BaseColumn } = Table
+
+export interface CampaignPageConfigs {
+  //
+}
+
 export type CampaignPageProps = Omit<
   CampaignLayoutProps,
   'breadCrumbProps' | 'headerProps' | 'tabProps' | 'stepProps' | 'tableProps' | 'formProps' | 'footerProps'
 > & {
   campaignDomain?: CampaignDomain
+  // configs?: CampaignPageConfigs
 }
 
 export interface InitCampaignTemplateProps {
@@ -31,16 +42,16 @@ export type CompoundedTemplateComponent<T extends LayoutType> = FC<TemplateCompo
         BreadCrumb: FC
         Header: FC
         Tabs: FC
-        Table: FC
-        Column: FC
-        Action: FC
+        Table: typeof Table
+        Column: typeof BaseColumn
+        Action: typeof BaseColumn
         Footer: FC
       }
     : {
         BreadCrumb: FC
         Header: FC
         Step: FC
-        Form: FC
-        Field: FC
+        Form: typeof BaseForm
+        Field: typeof BaseField
         Footer: FC
       })

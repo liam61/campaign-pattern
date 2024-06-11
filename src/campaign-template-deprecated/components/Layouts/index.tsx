@@ -1,10 +1,10 @@
 import { ReactNode } from 'react'
 
 import { PageBreadcrumbs, PageFooter, PageSteps, PageTabs } from '@components'
+import { CampaignLayoutProps } from '@ct'
 import { PageHeader, Spin } from 'antd'
 import cn from 'classnames'
 import { omit } from 'lodash'
-import { CampaignLayoutProps } from 'src/campaign-template/types'
 
 import { PageContent } from './Content'
 

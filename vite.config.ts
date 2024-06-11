@@ -48,7 +48,7 @@ export default defineConfig({
       '@components': join(__dirname, 'src/components'),
       '@shared': join(__dirname, 'src/shared'),
       '@pages/*': join(__dirname, 'src/pages/*'),
-      '@ct': join(__dirname, 'src/campaign-template'),
+      '@ct': join(__dirname, 'src/campaign-template-deprecated'),
       '@apis': join(__dirname, 'src/apis'),
     },
     // alias: [

@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { PageFooterProps, TabItemProps, PageStepItemProps } from '@components'
-import { Field, VoidField } from '@formily/core'
+import { PageFooterProps } from '@components'
 import { CTButtonProps } from '@shared/types'
 import { PageHeaderProps, TableProps } from 'antd'
 
@@ -13,16 +12,12 @@ export type CampaignSubDomain = 'campaignList' | 'campaignDetail' | 'sessionList
 
 export type ExtensionLoader = () => Promise<IExtension[]>
 
-export interface CampaignPageConfigs {
-  //
-}
-
 /**
  * the extension to implement
  */
 export interface IExtension {
   name: string
-  setup: (core: IExtensionCore, context: ExtensionContext) => Promise<void>
+  setup: (core: IExtensionCore, context: ExtensionContext) => void
   dispose?: (core: IExtensionCore, context: ExtensionContext) => void
 }
 
@@ -39,8 +34,8 @@ export interface IExtensionCore {
 
   // common
   provideHeader: ExtensionProvider<PageHeaderProps>
-  provideTab: ExtensionProvider<TabItemProps>
-  provideStep: ExtensionProvider<PageStepItemProps>
+  // provideTabs: ExtensionProvider<TabItemProps>
+  // provideStep: ExtensionProvider<PageStepItemProps>
   provideFooter: ExtensionProvider<PageFooterProps>
 
   // table  TODO: table and form type props
@@ -49,7 +44,7 @@ export interface IExtensionCore {
   provideAction: ExtensionProvider<CTButtonProps>
 
   // form
-  provideForm: ExtensionProvider<FormProps<Record<string, any>>>
-  provideField: ExtensionProvider<Field>
-  provideFormSection: ExtensionProvider<VoidField>
+  // provideForm: ExtensionProvider<FormProps<Record<string, any>>>
+  // provideField: ExtensionProvider<Field>
+  // provideSection: ExtensionProvider<VoidField>
 }

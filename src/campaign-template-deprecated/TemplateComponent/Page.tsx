@@ -9,11 +9,11 @@ import { CampaignPageProps, InitCampaignPagePayload } from '../types'
 function CampaignTemplatePage(props: CampaignPageProps): ReactNode {
   const { campaignDomain, layoutType, renderLoading = PageLoading } = props
 
-  const { loading, data: parsedPageProps, initiatePage } = useCampaignTemplate()
+  const { loading, data: parsedPageProps, init } = useCampaignTemplate()
 
   useEffect(() => {
     // props passed by wrappers
-    initiatePage(props as unknown as InitCampaignPagePayload)
+    init(props as unknown as InitCampaignPagePayload)
   }, [])
 
   if (loading) return renderLoading()

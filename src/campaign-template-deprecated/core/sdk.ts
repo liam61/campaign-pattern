@@ -27,12 +27,6 @@ export class CampaignTemplateSDK extends CampaignTemplateRenderer {
     this.setConfigs(configs || ({} as CampaignPageConfigs))
   }
 
-  // TODO: remove current render page
-  async setRenderPage(page: CampaignSubDomain): Promise<void> {
-    await this.reset()
-    this.extensionCore.setContext({ campaignPage: page })
-  }
-
   getExtensionContext(): ExtensionContext {
     return this.extensionCore.getContext()
   }

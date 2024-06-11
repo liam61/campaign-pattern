@@ -1,6 +1,8 @@
+import { TableProps } from 'antd'
 import { assign } from 'lodash'
+import { CTButtonProps } from 'src/shared/types'
 
-import { CampaignPageConfigs, ExtensionContext, IExtensionCore } from '../types'
+import { CTColumnProps, CampaignPageConfigs, ExtensionContext, ExtensionProvider, IExtensionCore } from '../types'
 
 export class ExtensionCore implements IExtensionCore {
   /**
@@ -34,21 +36,13 @@ export class ExtensionCore implements IExtensionCore {
     this.setContext({ headerProps: content })
   }
 
-  provideTabs: IExtensionCore['provideHeader'] = (config) => {
-    const { content } = config
-
-    this.setContext({ tabProps: content })
-  }
-
-  provideSteps: IExtensionCore['provideSteps'] = (config) => {
-    const { content } = config
-
-    this.setContext({ stepProps: content })
-  }
-
   provideFooter: IExtensionCore['provideFooter'] = (config) => {
     const { content } = config
 
     this.setContext({ footerProps: content })
   }
+
+  provideTable: ExtensionProvider<Omit<TableProps<Record<string, any>>, 'columns'>>
+  provideColumn: ExtensionProvider<CTColumnProps>
+  provideAction: ExtensionProvider<CTButtonProps>
 }

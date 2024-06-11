@@ -11,14 +11,14 @@ export interface CampaignTemplateContextValue {
    * parsed page props
    */
   data?: CampaignLayoutProps | null
-  initiatePage: (payload: InitCampaignPagePayload) => Promise<CampaignLayoutProps | null>
+  init: (payload: InitCampaignPagePayload) => Promise<CampaignLayoutProps | null>
 }
 
 const CampaignTemplateInitialValues = {
   sdk: null,
   loading: false,
   data: null,
-  initiatePage: async (): Promise<null> => null,
+  init: async (): Promise<null> => null,
 } as unknown as CampaignTemplateContextValue
 
 export const CampaignTemplateContext = createContext<CampaignTemplateContextValue>(CampaignTemplateInitialValues)

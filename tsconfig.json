@@ -7,7 +7,7 @@
       "@apis": ["src/apis"],
       "@shared/*": ["./src/shared/*"], // for ns/xx import use
       "@pages/*": ["./src/pages/*"],
-      "@ct": ["./src/campaign-template"]
+      "@ct": ["./src/campaign-template-deprecated"]
     },
     "target": "ES2020",
     "useDefineForClassFields": true,
