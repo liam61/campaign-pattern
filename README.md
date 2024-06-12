@@ -10,6 +10,38 @@
 
 3. 内核用插件拓展
 
+## 灵感
+
+要求
+
+1. 使用 JSX 书写
+
+2. 完全支持 antdProps
+
+3. 支持自定义，能够拿到上下文
+
+```ts
+const { Header, Table, Column, Action } = ListPageTemplate
+
+export function CampaignListPage(): ReactNode {
+  return (
+    <ListPageTemplate>
+      <Header />
+
+      <Table>
+        <Column {...antdProps} {...customProps} />
+        <Column />
+        <Column />
+
+        <Action />
+        <Action />
+      </Table>
+    </ListPageTemplate>
+  )
+}
+
+```
+
 ## Table 封装
 
 ```ts
